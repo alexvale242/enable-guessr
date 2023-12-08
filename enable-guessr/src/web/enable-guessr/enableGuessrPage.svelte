@@ -1,6 +1,32 @@
 <script lang="ts">
-    // your script goes here
+    import { onMount } from 'svelte'
+    import pageState from '../../state/page-state'
+
+    let pageUrl = '';
+
+    onMount(() => {
+        pageState.currentPage.subscribe(($currentPage) => {
+            pageUrl = $currentPage.imageUrl;
+        })
+    })
+
+    function getNextPage(): void {
+        pageState.nextPage();
+    }
 </script>
+
+<section class="page-heading">
+    <h1>Enable Guessr</h1>
+    <p>Do the thing and that</p>
+</section>
+<section class="page-content">
+    <div class="image-container">
+        <img src={pageUrl} alt="Screenshot of one of the pages of Enable" />
+    </div>
+</section>
+<section class="page-actions">
+    <button class="eds-button" on:click={getNextPage}>Next</button>
+</section>
 
 <style lang="scss">
     .page-heading {
@@ -15,7 +41,7 @@
         }
     }
 
-    .page-content{
+    .page-content {
         padding: 2rem;
         display: flex;
         flex-direction: column;
@@ -39,16 +65,3 @@
         }
     }
 </style>
-
-<section class="page-heading">
-    <h1>Enable Guessr</h1>
-    <p>Do the thing and that</p>
-</section>
-<section class="page-content">
-    <div class="image-container">
-        <img src="test.png" alt="Screenshot of one of the pages of Enable">
-    </div>
-</section>
-<section class="page-actions">
-    <button class="eds-button">Next</button>
-</section>
