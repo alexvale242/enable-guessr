@@ -6,11 +6,11 @@ Educational mini game based on GeoGuessr. Users are presented with different pag
 
 Collect and store many pictures of the Enable platform sans text, name each one based on something recognizable. My best idea at the moment is to use the title text that's on each screen, although this can change. []
 
-Store each picture along with it's answer in a json file. []
+Store each picture along with it's answer in a json file. [X]
 
-Build a basic layout with displays the image []
+Build a basic layout with displays the image [X]
 
-Build logic to load the image, as well as a next action []
+Build logic to load the image, as well as a next action [X]
 
 Add the ability to guess, including correct and incorrect guesses []
 

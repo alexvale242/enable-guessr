@@ -1,6 +1,8 @@
 import { writable, type Writable } from 'svelte/store';
 import type { Page } from '../data/page.model';
 import { pageData } from '../data/pages';
+import gameState from './game-state';
+
 
 export class PageState {
     constructor() {
@@ -15,18 +17,11 @@ export class PageState {
         this.currentPage.set(nextPage);
     }
 
-    private getNextPage(): Page {
-        const dataLength = pageData.pages.length;
-
-        const index = getRandomInt(0, dataLength - 1);
-        return pageData.pages[index];
+    private getNextPage() {
+        const pageIndex = gameState.getNextPageIndex();
+        return pageData.pages[pageIndex];
     }
 }
 
 export default new PageState();
 
-function getRandomInt(min: number, max: number): number {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
